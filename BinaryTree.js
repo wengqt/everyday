@@ -95,7 +95,6 @@ function print(value){
     console.log(value);
 }
 
-
 tree.inorder(print);//这里的回调函数，只调用不运行，所以不带括号，在print（node.key）处运行
 tree.preorder(print);
 tree.postorder(print);
