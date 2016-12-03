@@ -39,19 +39,6 @@ function Dictionary(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 function Graph(){
     var vertices = [];
     var list =new Dictionary();

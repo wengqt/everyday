@@ -19,3 +19,5 @@ day7 完善了歌词显示功能，在web项目里面，GitHub上
 day8 给博客添加了评论系统，然后看了廖雪峰的ajax
 
 day9用js写了图
+
+day10 bmob数据库
