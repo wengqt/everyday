@@ -3,7 +3,42 @@
  */
 
 Bmob.initialize("99cc872ea6272f43ffd52ccdde21f058", "aa9730efd33039cd0e19e4b1fbd96e39");
-var Test = Bmob.Object.extend("test");
+
+var Uname = document.getElementById("username").value;
+var pass = document.getElementById("userpassword").value;
+function signin() {
+    console.log(pass);
+
+    Bmob.User.logIn(Uname, pass, {
+        success: function(user) {
+           alert('success');
+            document.getElementById("test").style.display='block';
+            document.getElementById("signpage").style.display='none';
+
+        },
+        error: function(user, error) {
+            // The login failed. Check error to see why.
+            alert("登录失败");
+        }
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var Test = Bmob.Object.extend("Test");
 
 var test = new Test();
 
@@ -13,15 +48,19 @@ query.find({
         success: function(results) {
             console.log("共查询到 " + results.length + " 条记录");
             // 循环处理查询到的数据
-            for (var i = 0; i < results.length; i++) {
-                var object = results[i];
-                console.log(object.id + ' - ' + object.get('No')+'. '+object.get('testcontent'));
+            for (var i = 0; i < 20; i++) {
+                var random = Math.round(Math.random()*58);
+                console.log(random);
+                var object = results[random];
+                console.log(object.id + ' - ' + object.get('NO_')+'. '+object.get('testcontent'));
                 var li =document.createElement('li');
-                li.innerText=object.get('No')+'. '+object.get('testcontent');
+                li.innerText=object.get('NO_')+'. '+object.get('testcontent');
                 var no = i+1;
-                li.id='No-'+no;
+                li.id='No-'+object.get('NO_');
+                li.className =object.get('NO_');
 
                 var selection = document.createElement('select');
+                selection.id=no;
                 var option_a = document.createElement("option");
                 option_a.value='a';
                 option_a.innerText = object.get('option_a');
@@ -52,3 +91,53 @@ query.find({
     }
 
 );
+
+var score = 0;
+function Score() {
+
+    var list = document.getElementById('testbox');
+
+
+    for (var i =1;i<=10;i++){
+        var odd = i*2-2;
+        console.log(odd);
+        var id =parseInt(list.children[odd].className) ;
+        var idquery =new Bmob.Query(Test);
+        idquery.equalTo("NO_",id);
+      //  alert(id);
+        idquery.find({
+            success: function(results) {
+                //alert("共查询到 " + results.length + " 条记录");
+                // 循环处理查询到的数据
+
+                    var object = results[0];
+
+
+                    if (object.get('answer')==document.getElementById(odd+1).value){
+                        score = score+5;
+                        console.log(score);
+                    }
+
+            },
+            error: function(error) {
+                console.log("查询失败: " + error.code + " " + error.message);
+            }
+        });
+
+    }
+
+    // setInterval(showTime(),1000);
+    setTimeout("alert('恭喜你获得了'+score+'分')",3000);
+
+
+    document.getElementById("test").style.display ='none';
+    var p =document.createElement("p");
+    p.innerText="please wait for three seconds";
+    document.body.appendChild(p);
+
+
+}
+
+
+
+

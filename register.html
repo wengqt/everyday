@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register in the system</title>
+    <script src="bmob-min.js"></script>
+    <script src="sign.js"></script>
+    <script type="text/javascript">
+        var bo =0;
+       function changep() {
+            var p =document.getElementById("position").value;
+
+
+           if(bo==1){
+               var yt = document.getElementById("yourTeacher");
+                document.body.removeChild(yt);
+               bo=0;
+           }
+            if(p=="student"&& bo==0){
+                var div=document.createElement("div");
+                div.id="yourTeacher";
+                div.innerHTML='请输入您的教师姓名：<input type="text" id="teacherName">';
+                document.body.appendChild(div);
+                bo=1;
+            }
+
+        }
+    </script>
+</head>
+<body>
+姓名：<input type="text" id="username">
+密码：<input type="password" id="userpassword">
+选择职位：<select id="position" onchange="javascript:changep()">
+            <option value="teacher">老师</option>
+            <option value="student">学生</option>
+
+        </select>
+<!--<div id="yourTeacher">姓名：<input type="time" id="teacherName"></div>-->
+<button onclick="signup()">注册</button>
+</body>
+</html>

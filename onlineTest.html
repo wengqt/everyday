@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <title>onlineTest</title>
     <script src="bmob-min.js"></script>
-    <script src="onlineTest.js"></script>
+    <!--<script src="addTests.js"></script>-->
 </head>
 <body>
-    <ul id="testbox">
+    <div id="signpage">
+        姓名：<input type="text" id="username">
+        密码：<input type="password" id="userpassword">
+        <button type="submit" onclick="signin()">submit</button>
+    </div>
+    <div id="test" style="display: none">
+        <ul id="testbox">
 
 
-    </ul>
-
+        </ul>
+        <button type="submit" onclick="Score()">submit</button>
+    </div>
 </body>
+<script src="onlineTest.js"></script>
+
 </html>
