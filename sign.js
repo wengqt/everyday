@@ -7,7 +7,7 @@ function signup() {
     var name = document.getElementById("username").value;
     var pass = document.getElementById("userpassword").value;
     var position = document.getElementById("position").value;
-console.log(position);
+
     var user = new Bmob.User();
     user.set("username", name);
     user.set("password", pass);
@@ -18,6 +18,8 @@ console.log(position);
         var t = document.getElementById("teacherName").value;
         user.set("ites_teacher",t);
         console.log(t);
+        user.set("testTime",0);
+
     }
     user.signUp(null, {
         success: function(user) {
