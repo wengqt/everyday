@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onlineTest</title>
+    <script src="jquery-1.12.3.min.js"></script>
+
+    <script src="bmob-min.js"></script>
+    <script src="flat-ui.js"></script>
+    <link rel="stylesheet" href="flat-ui.css">
+    <!--<script src="addTests.js"></script>-->
+</head>
+<body>
+    <!--<div >-->
+        <!--姓名：<input type="text" >-->
+        <!--密码：<input type="password" >-->
+        <!--<button type="submit" onclick="signin()">submit</button>-->
+    <!--</div>-->
+    <div class="login" id="signpage">
+        <div class="login-screen">
+            <div class="login-icon">
+                <h4>Welcome to <small>Online Test System</small></h4>
+            </div>
+
+            <div class="login-form">
+                <div class="form-group" >
+                    <input type="text" class="form-control login-field" value="" placeholder="Enter your name" id="username" style="width: 80%" />
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control login-field" value="" placeholder="Password" id="userpassword" style="width: 80%"/>
+                    <!--<label class="login-field-icon fui-lock" for="userpassword"></label>-->
+                </div>
+
+                <a class="btn btn-primary btn-lg btn-block" href="javascript:signin()">Log in</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="test" style="display: none">
+        <ul id="testbox">
+
+
+        </ul>
+        <button type="submit" onclick="Score()">submit</button>
+    </div>
+</body>
+<script src="onlineTest.js"></script>
+
+</html>
