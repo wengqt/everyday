@@ -9,12 +9,15 @@ var student = Bmob.Object.extend("_User");
 var teacherName = currentUser.get("username");
 
 var queryStu =new Bmob.Query(student);
+var stu =[];
 queryStu.equalTo("ites_teacher",teacherName);
 queryStu.find({
     success: function(results) {
 
         // 循环处理查询到的数据
             for(var i =0;i<results.length;i++){
+                stu[i]=results[i];
+                // console.log(stu);
                 var object = results[i];
                 var name = object.get("username");
                 var testTime = object.get("testTime");
@@ -29,8 +32,8 @@ queryStu.find({
                         liText=liText+score[a]+' ';
                     }
 
-                    li.innerText=liText;
-                    console.log(liText);
+                    li.innerHTML=liText;
+                    // console.log(liText);
                 }
 
                 var ol = document.getElementById('studentlist');
@@ -48,3 +51,37 @@ queryStu.find({
         console.log("查询失败: " + error.code + " " + error.message);
     }
 });
+
+function deleteStudent(number) {
+    var hisname=stu[number].get("username");
+    // console.log(hisname);
+    var st = Bmob.Object.extend("_User");
+    var querySt =new Bmob.Query(st);
+    querySt.equalTo("username",hisname);
+    querySt.find({
+        success: function(results) {
+            // var object =results[0];
+            console.log(results);
+            // The object was retrieved successfully.
+            results[0].destroy({
+                success: function(object) {
+                    alert("delete success");
+                },
+                error: function(object, error) {
+                    alert("delete fail");
+                }
+            });
+        },
+        error: function(object, error) {
+            alert("query object fail");
+        }
+    });
+    // querySt.destroyAll({
+    //     success: function(){
+    //         alert("delete success");
+    //     },
+    //     error: function(err){
+    //         alert("delete fail");
+    //     }
+    // });
+}

@@ -147,7 +147,7 @@ function Score() {
 
     }
 
-    // setInterval(showTime(),1000);
+    setInterval(showTime,1000);
     setTimeout(sendScore,3000);
 function sendScore() {
     var time =currentUser.get("testTime");
@@ -172,11 +172,16 @@ function sendScore() {
     
     );
 }
+    var ti=3;
 
+function showTime() {
     document.getElementById("test").style.display ='none';
     var p =document.createElement("p");
-    p.innerText="please wait for three seconds";
+    p.innerText="please wait for "+ti+" seconds";
     document.body.appendChild(p);
+    ti--;
+}
+
 
 
 }
